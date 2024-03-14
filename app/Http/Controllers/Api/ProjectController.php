@@ -17,10 +17,10 @@ class ProjectController extends Controller
         ]);
     }
     public function show(string $slug){
-        $projects= Project::where('slug', $slug)->firstOrFail();
+        $project= Project::with('Type','Technologies')->where('slug', $slug)->firstOrFail();
         return response()->json([
             'success'=>true,
-            'results'=>$projects,
+            'results'=>$project,
         ]);
     }
 }
